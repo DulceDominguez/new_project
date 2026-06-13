@@ -4,11 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
-    <!-- FontAwesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
-    <!-- Stylesheet Link -->
     <link rel="stylesheet" href="style.css">
 
     <title>ALTIN | Perfume Shop</title>
@@ -104,7 +101,6 @@
                         accusamus consectetur!</p>
                 </div>
             </div>
-            <!-- Products Section -->
             <div id="products">
                 <h2>Our Best Product</h2>
                 <p>We provide best products for our customers.</p>
@@ -120,7 +116,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Testimonial Section -->
             <div id="testimonial">
                 <h2>What Our Clients Say</h2>
                 <p>We provide best products for our customers.</p>
@@ -156,19 +151,17 @@
                     <i class="fas fa-quote-right quote-icon"></i>
                 </div>
             </div>
-            <!-- Contact Section -->
             <div id="contact">
-
 
                 <h2>Contact Us</h2>
                 <p>Feel free to send us a message about anything. We always appreciate you.</p>
 
-                <form>
+                <form id="miFormulario">
                     <label for="name">Name</label> <br>
                     <input type="text" name="" id="name" placeholder="Enter your name" required>
                     <br>
                     <label for="email">Email</label> <br>
-                    <input type="email" name="" id="email" placeholder="Enter your email" required>
+                    <input type="text" name="" id="email" placeholder="Enter your email" required>
                     <br>
                     <label for="message">Message</label><br>
                     <textarea name="" id="message" placeholder="Enter your message" required></textarea>
@@ -180,6 +173,35 @@
         </main>
         <footer class="site-footer">Copyright &copy;2020 | All rights reserved | Created by Al Nahian</footer>
     </div>
+
+    <script>
+        // Seleccionamos el formulario y el campo de correo por su 'id'
+        const formulario = document.getElementById('miFormulario');
+        const campoCorreo = document.getElementById('email');
+
+        // Escuchamos el evento de envío (submit) del formulario
+        formulario.addEventListener('submit', function (evento) {
+
+            // Extraemos el texto que el usuario escribió
+            const textoCorreo = campoCorreo.value;
+
+            // Verificamos si el texto NO incluye el símbolo '@'
+            if (!textoCorreo.includes('@')) {
+
+                // Detenemos el envío para que la página no se recargue
+                evento.preventDefault();
+
+                // Imprimimos el error en la consola
+                console.error("¡Validación fallida! El usuario olvidó poner el '@' en su correo.");
+
+            } else {
+                // Si todo está bien, lo reportamos también (el formulario se enviará y la página se recargará)
+                console.log("El correo es válido, el formulario se enviaría correctamente.");
+            }
+        });
+        console.log("El correo es válido, el formulario se enviaría correctamente.");
+
+    </script>
 </body>
 
 </html>
